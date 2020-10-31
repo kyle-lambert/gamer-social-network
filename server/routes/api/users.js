@@ -13,9 +13,9 @@ router.post("/", async (req, res) => {
 
   if (firstName && lastName && email && password) {
     try {
-      const isUser = await User.findOne({ email });
+      const user = await User.findOne({ email });
 
-      if (isUser) {
+      if (user) {
         res.json({ msg: "A user with this email already exists." });
       } else {
         const newUser = new User({
