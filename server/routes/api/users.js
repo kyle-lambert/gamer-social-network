@@ -4,18 +4,10 @@ const bcrypt = require("bcrypt");
 
 const User = require("../../models/user");
 
-// @route    GET api/users
-// @desc     Get list of users
-// @access   Public
-router.get("/", (req, res) => {
-  res.json({
-    message: "list of users",
-  });
-});
-
 // @route    POST api/users
-// @desc     Register user
+// @desc     Register new user
 // @access   Public
+
 router.post("/", async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
@@ -40,7 +32,7 @@ router.post("/", async (req, res) => {
 
         await newUser.save();
 
-        res.json(newUser);
+        res.json({ newUser });
       }
     } catch (error) {
       res.status(500).send("Server error");
