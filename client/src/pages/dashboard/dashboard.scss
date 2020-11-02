@@ -1,0 +1,13 @@
+.dashboard {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 150px auto;
+
+  &-navbar {
+    grid-column: 1 / 2;
+  }
+
+  &-page {
+    grid-column: 2 / 3;
+  }
+}
