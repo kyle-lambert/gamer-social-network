@@ -1,0 +1,30 @@
+@import "../../scss/base/variables";
+
+.register-form {
+  display: grid;
+  column-gap: 20px;
+  row-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-areas:
+    "fname lname"
+    "email email"
+    "password password"
+    "submit submit";
+
+  &__fname {
+    grid-area: fname;
+  }
+  &__lname {
+    grid-area: lname;
+  }
+  &__email {
+    grid-area: email;
+  }
+  &__password {
+    grid-area: password;
+  }
+  &__submit {
+    grid-area: submit;
+  }
+}

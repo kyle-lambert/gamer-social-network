@@ -1,0 +1,39 @@
+@import "../../scss/base/variables";
+
+.form-input {
+  &__label {
+    display: block;
+    margin-bottom: 7px;
+    text-transform: uppercase;
+  }
+
+  &__input {
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: $grey;
+    padding: 0 13px;
+    height: 50px;
+    width: 100%;
+    background-color: transparent;
+    border: 2px solid rgba(143, 146, 161, 0.2);
+    border-radius: 5px;
+    cursor: pointer;
+
+    &::placeholder {
+      color: rgba(143, 146, 161, 0.4);
+    }
+
+    &:focus {
+      border-color: $primary;
+    }
+
+    &[data-success="true"] {
+      border-color: $success;
+    }
+
+    &[data-error="true"] {
+      border-color: $error;
+    }
+  }
+}
