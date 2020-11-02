@@ -4,7 +4,6 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const User = require("../../models/user");
-const { urlencoded } = require("express");
 
 // @route    POST api/auth
 // @desc     Authenticate user and get token
@@ -17,7 +16,7 @@ router.post("/", async (req, res) => {
     try {
       const user = await User.findOne({ email });
 
-      if (existingUser) {
+      if (user) {
         const isMatch = await bcrypt.compare(password, user.password);
 
         if (isMatch) {
