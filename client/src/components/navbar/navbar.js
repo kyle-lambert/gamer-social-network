@@ -12,9 +12,10 @@ function Navbar(props) {
           return (
             <NavLink
               key={route.id}
+              exact
               to={route.path}
               className="navbar__link"
-              activeClassName="selected">
+              activeClassName="navbar__selected">
               <Icon iconName={route.iconName} />
             </NavLink>
           );
