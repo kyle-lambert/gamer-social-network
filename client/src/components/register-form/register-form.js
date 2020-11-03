@@ -4,13 +4,15 @@ import "./register-form.scss";
 import FormInput from "../form-input/form-input";
 import Button from "../../components/button/button";
 
-function RegisterForm(props) {
-  const [state, setState] = React.useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-  });
+const initState = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+};
+
+function RegisterForm({ registerAccount }) {
+  const [state, setState] = React.useState(initState);
 
   const handleChange = (e) => {
     setState((prev) => {
@@ -21,8 +23,19 @@ function RegisterForm(props) {
     });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { firstName, lastName, email, password } = state;
+
+    if (firstName && lastName && email && password) {
+      registerAccount({ firstName, lastName, email, password });
+      setState(initState);
+    } else {
+    }
+  };
+
   return (
-    <form className="register-form">
+    <form className="register-form" onSubmit={handleSubmit}>
       <div className="register-form__fname">
         <FormInput
           label="First Name"
