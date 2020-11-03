@@ -2,6 +2,7 @@ import React from "react";
 import "./register-form.scss";
 
 import FormInput from "../form-input/form-input";
+import Button from "../../components/button/button";
 
 function RegisterForm(props) {
   const [state, setState] = React.useState({
@@ -61,7 +62,9 @@ function RegisterForm(props) {
           type="password"
         />
       </div>
-      <div className="register-form__submit">{/* Submit button */}</div>
+      <div className="register-form__submit">
+        <Button type="submit">Create Account</Button>
+      </div>
     </form>
   );
 }

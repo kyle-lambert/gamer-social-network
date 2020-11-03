@@ -1,0 +1,26 @@
+@import "../../scss/base/variables";
+
+.login-form {
+  display: grid;
+  column-gap: 15px;
+  row-gap: 15px;
+  grid-template-rows: repeat(3, auto);
+  grid-template-areas:
+    "email"
+    "password"
+    "submit";
+
+  &__email {
+    grid-area: email;
+  }
+
+  &__password {
+    grid-area: password;
+  }
+
+  &__submit {
+    margin-top: 30px;
+    grid-area: submit;
+    justify-self: stretch;
+  }
+}
