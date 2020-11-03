@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
-import Landing from "../../pages/landing/landing";
+import Authentication from "../../pages/authentication/authentication";
 import Register from "../../pages/register/register";
 import Login from "../../pages/login/login";
 import Dashboard from "../../pages/dashboard/dashboard";
@@ -13,14 +13,12 @@ function App(props) {
   return (
     <>
       <Switch>
-        <Route exact path="/" component={Landing} />
+        <Route exact path="/" component={Authentication} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/404" component={Error} />
+        <Route exact path="/error" component={Error} />
         <PrivateRoute path="/dashboard" component={Dashboard} />
-        <Route>
-          <Redirect to="/404" />
-        </Route>
+        <Redirect to="/404" />
       </Switch>
     </>
   );

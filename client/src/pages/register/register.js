@@ -1,13 +1,16 @@
 import React from "react";
 import "./register.scss";
 
+import LandingLayout from "../../layout/landing-layout/landing-layout";
 import RegisterForm from "../../components/register-form/register-form";
 
 function Register(props) {
   return (
-    <div className="register">
-      <RegisterForm />
-    </div>
+    <LandingLayout register>
+      <div className="register">
+        <RegisterForm />
+      </div>
+    </LandingLayout>
   );
 }
 
