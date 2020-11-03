@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
       const user = await User.findOne({ email });
 
       if (user) {
-        res.json({ msg: "A user with this email already exists." });
+        res.status(400).json({ errors: ["Email is already taken"] });
       } else {
         const newUser = new User({
           firstName,
@@ -32,14 +32,14 @@ router.post("/", async (req, res) => {
 
         await newUser.save();
 
-        res.json({ newUser });
+        res.status(200).json({ user: newUser });
       }
     } catch (error) {
-      res.status(500).send("Server error");
+      res.status(500).json({ errors: ["Server error"] });
       console.error(error.message);
     }
   } else {
-    res.status(400).json({ msg: "Fields are required." });
+    res.status(400).json({ errors: ["All fields are required"] });
   }
 });
 
