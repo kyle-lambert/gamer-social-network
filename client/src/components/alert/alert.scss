@@ -1,0 +1,66 @@
+@import "../../scss/base/variables";
+
+.alert {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  z-index: 99;
+
+  &__bar {
+    position: relative;
+    height: 60px;
+    padding: 15px;
+    margin: 5px;
+    min-width: 200px;
+    display: flex;
+    background-color: $white;
+    border: 2px solid $grey;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    box-shadow: 1px 1px 10px rgba(30, 31, 32, 0.1);
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $grey;
+      opacity: 0.3;
+    }
+  }
+
+  &__msg {
+    text-align: center;
+    color: $grey;
+    font-weight: 500;
+    z-index: 9;
+  }
+}
+
+// Success state styles => primary color
+.alert__bar[data-success="true"] {
+  border-color: $primary;
+}
+.alert__bar[data-success="true"]::after {
+  background-color: $primary;
+}
+.alert__bar[data-success="true"] .alert__msg {
+  color: $primary;
+}
+
+// Error state styles => secondary color
+.alert__bar[data-error="true"] {
+  border-color: $secondary;
+}
+.alert__bar[data-error="true"]::after {
+  background-color: $secondary;
+}
+.alert__bar[data-error="true"] .alert__msg {
+  color: $secondary;
+}
