@@ -9,57 +9,65 @@ const AuthDispatchContext = React.createContext();
 const initState = {
   user: null,
   token: null,
-  registerSuccess: false,
-  registerLoading: false,
-  loginSuccess: false,
-  loginLoading: false,
+  loading: false,
 };
 
 const types = {
-  SET_TOKEN: "SET_TOKEN",
-  SET_USER: "SET_USER",
-  REGISTER_SUCCESS: "SET_REGISTER_SUCCESS",
-  REGISTER_LOADING: "SET_REGISTER_LOADING",
-  LOGIN_SUCCESS: "LOGIN_SUCCESS",
-  LOGIN_LOADING: "LOGIN_LOADING",
+  REGISTER_USER_REQUEST: "REGISTER_USER_REQUEST",
+  REGISTER_USER_SUCCESS: "REGISTER_USER_SUCCESS",
+  REGISTER_USER_FAILURE: "REGISTER_USER_FAILURE",
+  LOGIN_USER_REQUEST: "LOGIN_USER_REQUEST",
+  LOGIN_USER_SUCCESS: "LOGIN_USER_SUCCESS",
+  LOGIN_USER_FAILURE: "LOGIN_USER_FAILURE",
+  LOGOUT_USER: "LOGIN_USER",
 };
 
 const authReducer = (state, action) => {
   switch (action.type) {
-    case types.SET_TOKEN: {
+    case types.LOGIN_USER_REQUEST: {
       return {
         ...state,
-        token: action.payload,
+        loading: true,
       };
     }
-    case types.SET_USER: {
+    case types.LOGIN_USER_SUCCESS: {
       return {
         ...state,
-        user: action.payload,
+        user: action.payload.user,
+        token: action.payload.token,
+        loading: false,
       };
     }
-    case types.REGISTER_SUCCESS: {
+    case types.LOGIN_USER_FAILURE: {
       return {
         ...state,
-        registerSuccess: action.payload,
+        loading: false,
       };
     }
-    case types.REGISTER_LOADING: {
+    case types.REGISTER_USER_REQUEST: {
       return {
         ...state,
-        registerLoading: action.payload,
+        loading: true,
       };
     }
-    case types.LOGIN_SUCCESS: {
+    case types.REGISTER_USER_SUCCESS: {
       return {
         ...state,
-        loginSuccess: action.payload,
+        loading: false,
       };
     }
-    case types.LOGIN_LOADING: {
+    case types.REGISTER_USER_FAILURE: {
       return {
         ...state,
-        loginLoading: action.payload,
+        loading: false,
+      };
+    }
+    case types.LOGOUT_USER: {
+      return {
+        ...state,
+        user: null,
+        token: null,
+        loading: false,
       };
     }
     default: {
@@ -80,51 +88,43 @@ function AuthContextProvider({ children }) {
   );
 }
 
-const creator = (type, payload) => {
-  return {
-    type,
-    payload,
-  };
-};
-
 function useAuthContext() {
   const state = React.useContext(AuthStateContext);
   const dispatch = React.useContext(AuthDispatchContext);
   const { setAlert } = useAlertContext();
 
-  const registerNewAccount = (form) => {
-    dispatch(creator(types.REGISTER_LOADING, true));
+  const registerUser = ({ firstName, lastName, email, password }) => {
+    dispatch({ type: types.REGISTER_USER_REQUEST });
     api
       .post("/users", {
         data: {
-          firstName: form.firstName,
-          lastName: form.lastName,
-          email: form.email,
-          password: form.password,
+          firstName,
+          lastName,
+          email,
+          password,
         },
       })
       .then(() => {
         setAlert({
           msg: "Account has been created",
           type: "success",
-          timeout: 10000,
+          timeout: 5000,
         });
-        dispatch(creator(types.REGISTER_SUCCESS, true));
-        dispatch(creator(types.REGISTER_LOADING, false));
+        dispatch({ type: types.REGISTER_USER_SUCCESS });
       })
       .catch((err) => {
         const errors = err.response.data.errors;
         if (Array.isArray(errors)) {
           errors.forEach((msg) => {
-            setAlert({ msg, type: "error", timeout: 10000 });
+            setAlert({ msg, type: "error", timeout: 5000 });
           });
         }
-        dispatch(creator(types.REGISTER_LOADING, false));
+        dispatch({ type: types.REGISTER_USER_FAILURE });
       });
   };
 
   const loginUser = ({ email, password }) => {
-    dispatch(creator(types.LOGIN_LOADING, true));
+    dispatch({ type: types.LOGIN_USER_REQUEST });
     api
       .post("/auth", {
         data: {
@@ -134,26 +134,36 @@ function useAuthContext() {
       })
       .then((data) => {
         const { token, user } = data.data;
-        setAlert({ msg: "User logged in", type: "success", timeout: 10000 });
-        dispatch(creator(types.SET_USER, user));
-        dispatch(creator(types.SET_TOKEN, token));
-        dispatch(creator(types.LOGIN_LOADING, false));
+        setAlert({ msg: "User logged in", type: "success", timeout: 5000 });
+        dispatch({
+          type: types.LOGIN_USER_SUCCESS,
+          payload: {
+            token,
+            user,
+          },
+        });
       })
       .catch((err) => {
         const errors = err.response.data.errors;
         if (Array.isArray(errors)) {
           errors.forEach((msg) => {
-            setAlert({ msg, type: "error", timeout: 10000 });
+            setAlert({ msg, type: "error", timeout: 5000 });
           });
         }
-        dispatch(creator(types.LOGIN_LOADING, false));
+        dispatch({ type: types.LOGIN_USER_FAILURE });
       });
   };
 
+  const logoutUser = React.useCallback(() => {
+    setAlert({ msg: "User logged out", type: "success", timeout: 5000 });
+    dispatch({ type: types.LOGOUT_USER });
+  }, [dispatch, setAlert]);
+
   return {
     state,
-    registerNewAccount,
+    registerUser,
     loginUser,
+    logoutUser,
   };
 }
 

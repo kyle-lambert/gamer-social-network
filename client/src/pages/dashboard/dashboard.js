@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, useHistory } from "react-router-dom";
 import "./dashboard.scss";
 
 import Home from "../../components/home/home";
@@ -9,7 +9,24 @@ import Post from "../../components/post/post";
 
 import Navbar from "../../components/navbar/navbar";
 
+import { useAuthContext } from "../../contexts/AuthContext";
+
 function Dashboard(props) {
+  const history = useHistory();
+  const { state, logoutUser } = useAuthContext();
+
+  React.useEffect(() => {
+    if (!state.user) {
+      history.push("/login");
+    }
+  }, [state.user, history]);
+
+  React.useEffect(() => {
+    return () => {
+      logoutUser();
+    };
+  }, [logoutUser]);
+
   return (
     <div className="dashboard">
       <div className="dashboard-navbar">

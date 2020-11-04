@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./landing-layout.scss";
 
 import GameConsole from "../../assets/images/game-console.jpg";

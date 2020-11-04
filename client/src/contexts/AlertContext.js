@@ -37,32 +37,28 @@ function AlertContextProvider({ children }) {
   );
 }
 
-const creator = (type, payload) => {
-  return {
-    type,
-    payload,
-  };
-};
-
 function useAlertContext() {
   const state = React.useContext(AlertStateContext);
   const dispatch = React.useContext(AlertDispatchContext);
 
-  const setAlert = ({ msg, type, timeout }) => {
-    if (typeof msg === "string") {
-      const alert = {
-        id: uuidv4(),
-        type,
-        msg,
-      };
-      dispatch(creator(types.SET_ALERT, alert));
-      setTimeout(() => {
-        dispatch(creator(types.REMOVE_ALERT, alert.id));
-      }, timeout);
-    } else {
-      console.log("Alert type is not a string.");
-    }
-  };
+  const setAlert = React.useCallback(
+    ({ msg, type, timeout }) => {
+      if (typeof msg === "string") {
+        const alert = {
+          id: uuidv4(),
+          type,
+          msg,
+        };
+        dispatch({ type: types.SET_ALERT, payload: alert });
+        setTimeout(() => {
+          dispatch({ type: types.REMOVE_ALERT, payload: alert.id });
+        }, timeout);
+      } else {
+        console.log("Alert type is not a string.");
+      }
+    },
+    [dispatch]
+  );
 
   return {
     alerts: state,

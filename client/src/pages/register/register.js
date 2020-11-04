@@ -5,11 +5,7 @@ import "./register.scss";
 import LandingLayout from "../../layout/landing-layout/landing-layout";
 import RegisterForm from "../../components/register-form/register-form";
 
-import { useAuthContext } from "../../contexts/AuthContext";
-
 function Register(props) {
-  const { state, registerNewAccount } = useAuthContext();
-
   return (
     <LandingLayout>
       <div className="register">
@@ -17,7 +13,7 @@ function Register(props) {
         <span className="register__subheading">
           Please create an account to continue
         </span>
-        <RegisterForm registerNewAccount={registerNewAccount} />
+        <RegisterForm />
         <span className="register__cta">
           Already have an account?
           <Link to="/login" className="register__link">

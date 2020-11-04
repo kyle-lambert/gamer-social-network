@@ -4,6 +4,8 @@ import "./register-form.scss";
 import FormInput from "../form-input/form-input";
 import Button from "../../components/button/button";
 
+import { useAuthContext } from "../../contexts/AuthContext";
+
 const initState = {
   firstName: "",
   lastName: "",
@@ -13,6 +15,7 @@ const initState = {
 
 function RegisterForm({ registerNewAccount }) {
   const [state, setState] = React.useState(initState);
+  const { registerUser } = useAuthContext();
 
   const handleChange = (e) => {
     setState((prev) => {
@@ -28,9 +31,8 @@ function RegisterForm({ registerNewAccount }) {
     const { firstName, lastName, email, password } = state;
 
     if (firstName && lastName && email && password) {
-      registerNewAccount({ firstName, lastName, email, password });
+      registerUser({ firstName, lastName, email, password });
       setState(initState);
-    } else {
     }
   };
 

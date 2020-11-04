@@ -4,13 +4,16 @@ import "./login-form.scss";
 import FormInput from "../form-input/form-input";
 import Button from "../button/button";
 
+import { useAuthContext } from "../../contexts/AuthContext";
+
 const initState = {
   email: "",
   password: "",
 };
 
-function LoginForm({ loginUser }) {
+function LoginForm(props) {
   const [state, setState] = React.useState(initState);
+  const { loginUser } = useAuthContext();
 
   const handleChange = (e) => {
     setState((prev) => {
@@ -28,7 +31,6 @@ function LoginForm({ loginUser }) {
     if (email && password) {
       loginUser({ email, password });
       setState(initState);
-    } else {
     }
   };
 
