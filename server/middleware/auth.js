@@ -9,10 +9,10 @@ async function auth(req, res, next) {
       req.userId = decoded.id;
       next();
     } catch (error) {
-      res.status(400).json({ msg: "JWT Token is not vaild." });
+      res.status(400).json({ errors: ["JWT Token is not vaild"] });
     }
   } else {
-    res.status(401).json({ msg: "No token, authorisation denied." });
+    res.status(401).json({ errors: ["No token, authorisation denied"] });
   }
 }
 
