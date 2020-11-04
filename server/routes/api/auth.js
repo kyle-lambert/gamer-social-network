@@ -10,7 +10,7 @@ const User = require("../../models/user");
 // @access   Public
 
 router.post("/", async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password } = req.body.data;
 
   if (email && password) {
     try {
@@ -27,9 +27,9 @@ router.post("/", async (req, res) => {
 
           jwt.sign(payload, JWT_SECRET, (error, token) => {
             if (error) {
-              res.status(500).json({ msg: "Unable to generate JWT." });
+              res.status(500).json({ errors: ["Unable to generate JWT"] });
             } else {
-              res.json({
+              res.status(200).json({
                 token,
                 user: {
                   id: user.id,
@@ -41,20 +41,20 @@ router.post("/", async (req, res) => {
           });
         } else {
           res.status(400).json({
-            msg: "Invalid credentials.",
+            errors: ["Invalid credentials"],
           });
         }
       } else {
         res.status(400).json({
-          msg: "User with this email does not exist.",
+          errors: ["Email does not exist. Please create an account first"],
         });
       }
     } catch (error) {
-      res.status(500).send("Server error");
+      res.status(500).json({ errors: ["Server error"] });
       console.error(error.message);
     }
   } else {
-    res.status(400).json({ msg: "Fields are required." });
+    res.status(400).json({ errors: ["Fields are required"] });
   }
 });
 

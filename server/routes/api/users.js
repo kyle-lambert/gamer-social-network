@@ -9,7 +9,7 @@ const User = require("../../models/user");
 // @access   Public
 
 router.post("/", async (req, res) => {
-  const { firstName, lastName, email, password } = req.body;
+  const { firstName, lastName, email, password } = req.body.data;
 
   if (firstName && lastName && email && password) {
     try {
