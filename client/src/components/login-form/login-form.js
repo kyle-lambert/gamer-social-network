@@ -4,11 +4,13 @@ import "./login-form.scss";
 import FormInput from "../form-input/form-input";
 import Button from "../button/button";
 
-function LoginForm(props) {
-  const [state, setState] = React.useState({
-    email: "",
-    password: "",
-  });
+const initState = {
+  email: "",
+  password: "",
+};
+
+function LoginForm({ loginUser }) {
+  const [state, setState] = React.useState(initState);
 
   const handleChange = (e) => {
     setState((prev) => {
@@ -19,8 +21,19 @@ function LoginForm(props) {
     });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { email, password } = state;
+
+    if (email && password) {
+      loginUser({ email, password });
+      setState(initState);
+    } else {
+    }
+  };
+
   return (
-    <form className="login-form">
+    <form onSubmit={handleSubmit} className="login-form">
       <div className="login-form__email">
         <FormInput
           label="Email"

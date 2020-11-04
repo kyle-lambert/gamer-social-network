@@ -11,7 +11,7 @@ const initState = {
   password: "",
 };
 
-function RegisterForm({ registerAccount }) {
+function RegisterForm({ registerNewAccount }) {
   const [state, setState] = React.useState(initState);
 
   const handleChange = (e) => {
@@ -28,7 +28,7 @@ function RegisterForm({ registerAccount }) {
     const { firstName, lastName, email, password } = state;
 
     if (firstName && lastName && email && password) {
-      registerAccount({ firstName, lastName, email, password });
+      registerNewAccount({ firstName, lastName, email, password });
       setState(initState);
     } else {
     }
