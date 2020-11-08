@@ -1,18 +1,23 @@
-const Profile = require('../models/profile');
+const Profile = require("../models/profile");
 
 async function createProfile(req, res) {
-  const currentUserId = req.userId;
+  const { aboutMe, gamerTag, avatar, location } = req.body.data;
 
-  if (currentUserId) {
-    try {
-      const 
-      
-    } catch (error) {
-      res.status(400).json({ errors: ["No profile found"] });
-    }
-  } else {
-    res.status(500).json({ errors: ["Server error"] });
-  }
+  const profile = {
+    userId: currentUserId,
+    aboutMe,
+    gamerTag,
+    avatar,
+    location,
+  };
+
+  const newProfile = await Profile.findOneAndUpdate(
+    { userId: currentUserId },
+    { $set: profile },
+    { new: true, upsert: true }
+  );
+
+  res.status(200).json({ newProfile });
 }
 
 module.exports = {
