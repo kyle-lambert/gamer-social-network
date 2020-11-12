@@ -6,7 +6,7 @@ async function auth(req, res, next) {
   if (token) {
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      req.userId = decoded.id;
+      req.user = decoded.user;
       next();
     } catch (error) {
       res.status(400).json({ errors: ["JWT Token is not vaild"] });
