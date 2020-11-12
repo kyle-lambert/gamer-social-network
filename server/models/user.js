@@ -11,6 +11,9 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    avatar: {
+      type: String,
+    },
     email: {
       type: String,
       required: true,
@@ -23,5 +26,5 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
-const User = mongoose.model("user", userSchema);
+const User = mongoose.model("User", userSchema);
 module.exports = User;

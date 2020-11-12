@@ -20,6 +20,23 @@ async function createProfile(req, res) {
   res.status(200).json({ newProfile });
 }
 
+async function findUserProfile(req, res) {
+  try {
+    const profile = await Profile.findOne({ user: req.user.id }).populate(
+      "User"
+    );
+
+    if (profile) {
+      res.status(200).json(profile);
+    } else {
+      res.status(404).json({ errors: ["Profile does not exist"] });
+    }
+  } catch (error) {
+    res.status(500).json({ errors: ["Server error"] });
+  }
+}
+
 module.exports = {
   createProfile,
+  findUserProfile,
 };
