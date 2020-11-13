@@ -1,6 +1,8 @@
+const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
 const User = require("../models/user");
+const { findById } = require("../models/user");
 
 async function registerUser(req, res) {
   const { firstName, lastName, email, password } = req.body.data;
@@ -41,7 +43,7 @@ async function updateUser(req, res) {
   const { aboutMe, handle, location } = req.body.data;
 
   try {
-    const user = await User.findById(req.user.id);
+    const user = await User.findById(req.user.id).select("-password");
 
     if (user) {
       user.aboutMe = aboutMe;
@@ -61,34 +63,8 @@ async function updateUser(req, res) {
 
 async function followUser(req, res) {
   try {
-    const followerId = req.user.id;
-    const followingId = req.params.id;
-
-    const followerUser = await User.findByIdAndUpdate(
-      followerId,
-      {
-        $push: { following: followingId },
-      },
-      { new: true }
-    );
-
-    const followingUser = await User.findByIdAndUpdate(
-      followingId,
-      {
-        $push: { followers: followerId },
-      },
-      {
-        new: true,
-      }
-    );
-
-    if (followerUser && followingUser) {
-      res.status(200).json({
-        followerUser,
-        followingUser,
-      });
-    } else {
-      res.status(500).json({ errors: ["User not found"] });
+    if (req.user.id === req.params.id) {
+      res.status(400).json({ errors: ["You cannot follow yourself"] });
     }
   } catch (error) {
     res.status(500).json({ errors: ["Server error"] });
@@ -99,10 +75,7 @@ async function unfollowUser(req, res) {}
 
 async function getAllUsers(req, res) {
   try {
-    const users = await User.find()
-      .populate("followers")
-      .populate("following")
-      .select("-password");
+    const users = await User.find().select("-password");
 
     if (users) {
       res.status(200).json(users);
@@ -116,10 +89,7 @@ async function getAllUsers(req, res) {
 
 async function getCurrentUser(req, res) {
   try {
-    const user = await User.findById(req.user.id)
-      .populate("following")
-      .populate("followers")
-      .select("-password");
+    const user = await User.findById(req.user.id).select("-password");
 
     if (user) {
       res.status(200).json(user);

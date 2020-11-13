@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const auth = require("../../middleware/auth");
+const checkValidObjectId = require("../../middleware/checkValidObjectId");
 const {
   getAllUsers,
   registerUser,
@@ -34,16 +35,16 @@ router.get("/me", auth, getCurrentUser);
 // @route    GET api/users/:id
 // @desc     Get user by id
 // @access   Private
-router.get("/:id", auth, getUserById);
+router.get("/:id", [auth, checkValidObjectId], getUserById);
 
-// @route    PUR api/users/follow/:id
+// @route    PUT api/users/follow/:id
 // @desc     Follow user
 // @access   Private
-router.put("/follow/:id", auth, followUser);
+router.put("/follow/:id", [auth, checkValidObjectId], followUser);
 
 // @route    PUT api/users/unfollow/:id
 // @desc     Unfollow user
 // @access   Private
-router.put("/unfollow/:id", auth, unfollowUser);
+router.put("/unfollow/:id", [auth, checkValidObjectId], unfollowUser);
 
 module.exports = router;

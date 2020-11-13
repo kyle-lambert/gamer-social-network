@@ -18,6 +18,8 @@ async function authenticateUser(req, res) {
           const payload = {
             user: {
               id: user.id,
+              firstName: user.firstName,
+              lastName: user.lastName,
             },
           };
 
