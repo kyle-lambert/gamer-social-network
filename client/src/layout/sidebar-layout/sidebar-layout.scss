@@ -1,0 +1,23 @@
+@import "../../scss/base/variables";
+
+.sidebar-layout {
+  display: none;
+
+  @media (min-width: $laptop) {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 380px;
+    padding: 30px;
+    background-color: $dark;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
+
+  &__inner {
+    color: white;
+  }
+}

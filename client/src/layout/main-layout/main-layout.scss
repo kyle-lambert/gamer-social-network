@@ -1,0 +1,17 @@
+@import "../../scss/base/variables";
+
+.main-layout {
+  padding: 30px;
+  margin-bottom: 80px;
+
+  @media (min-width: $tablet) {
+    margin-bottom: unset;
+    margin-left: 90px;
+  }
+
+  &[data-sidebar="true"] {
+    @media (min-width: $laptop) {
+      margin-right: 380px;
+    }
+  }
+}
