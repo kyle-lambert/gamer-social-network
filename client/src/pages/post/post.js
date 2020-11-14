@@ -1,12 +1,16 @@
 import React from "react";
 
-import DashboardLayout from "../../layout/dashboard-layout/dashboard-layout";
+import MainLayout from "../../layout/main-layout/main-layout";
+import SidebarLayout from "../../layout/sidebar-layout/sidebar-layout";
+import Navbar from "../../components/navbar/navbar";
 
 function Post(props) {
   return (
-    <DashboardLayout>
-      <div>Post</div>
-    </DashboardLayout>
+    <>
+      <Navbar />
+      <MainLayout sidebar>post</MainLayout>
+      <SidebarLayout>sidebar</SidebarLayout>
+    </>
   );
 }
 

@@ -1,9 +1,17 @@
 import React from "react";
 
-import DashboardLayout from "../../layout/dashboard-layout/dashboard-layout";
+import MainLayout from "../../layout/main-layout/main-layout";
+import SidebarLayout from "../../layout/sidebar-layout/sidebar-layout";
+import Navbar from "../../components/navbar/navbar";
 
 function Settings(props) {
-  return <DashboardLayout>settings</DashboardLayout>;
+  return (
+    <>
+      <Navbar />
+      <MainLayout sidebar>profile</MainLayout>
+      <SidebarLayout>sidebar</SidebarLayout>
+    </>
+  );
 }
 
 export default Settings;
