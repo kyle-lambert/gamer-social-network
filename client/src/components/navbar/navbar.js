@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import "./navbar.scss";
 
 import Icon from "../icon/icon";
+import routes from "../../utils/routes";
 
 function Navbar(props) {
   return (
@@ -24,21 +25,5 @@ function Navbar(props) {
     </div>
   );
 }
-
-const routes = [
-  { id: 1, name: "Home", path: "/dashboard", iconName: "home" },
-  {
-    id: 2,
-    name: "Profile",
-    path: "/dashboard/profile",
-    iconName: "personOutline",
-  },
-  {
-    id: 3,
-    name: "Settings",
-    path: "/dashboard/settings",
-    iconName: "settings",
-  },
-];
 
 export default Navbar;
