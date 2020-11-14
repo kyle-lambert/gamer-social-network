@@ -1,0 +1,39 @@
+@import "../../scss/base/variables";
+
+.svg-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &[data-size="small"] {
+    svg {
+      height: 22px;
+    }
+  }
+
+  &[data-size="medium"] {
+    svg {
+      height: 26px;
+    }
+  }
+
+  &[data-fill-color="white"] {
+    fill: $white;
+
+    svg {
+      fill: $white;
+    }
+  }
+
+  &[data-fill-color="grey"] {
+    fill: $grey;
+
+    svg {
+      fill: $grey;
+    }
+  }
+
+  svg {
+    width: auto;
+  }
+}

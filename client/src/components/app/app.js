@@ -9,6 +9,7 @@ import Home from "../../pages/home/home";
 import Post from "../../pages/post/post";
 import Profile from "../../pages/profile/profile";
 import UserProfile from "../../pages/user-profile/user-profile";
+import Settings from "../../pages/settings/settings";
 
 import Alert from "../alert/alert";
 import PrivateRoute from "../../hoc/private-route";
@@ -26,6 +27,7 @@ function App(props) {
         <PrivateRoute exact path="/post/:id" component={Post} />
         <PrivateRoute exact path="/profile/me" component={Profile} />
         <PrivateRoute exact path="/profile/:id" component={UserProfile} />
+        <PrivateRoute exact path="/settings" component={Settings} />
         <Route>
           <Redirect to="/error" />
         </Route>

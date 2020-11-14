@@ -1,4 +1,4 @@
-import "./icon.scss";
+import "./svg-icon.scss";
 
 import { ReactComponent as ArrowDown } from "../../assets/icons/arrow_down.svg";
 import { ReactComponent as ArrowLeft } from "../../assets/icons/arrow_left.svg";
@@ -28,8 +28,12 @@ const icons = {
   settings: <Settings />,
 };
 
-function Icon({ iconName }) {
-  return <div className="icon">{icons[iconName]}</div>;
+function SVGIcon({ name, size = "medium", fillColor = "white" }) {
+  return (
+    <div data-size={size} data-fill-color={fillColor} className="svg-icon">
+      {icons[name]}
+    </div>
+  );
 }
 
-export default Icon;
+export default SVGIcon;

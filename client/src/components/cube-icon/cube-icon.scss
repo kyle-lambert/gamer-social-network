@@ -1,0 +1,38 @@
+@import "../../scss/base/variables";
+
+.cube-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+
+  &[data-size="small"] {
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+  }
+
+  &[data-size="medium"] {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+  }
+
+  &[data-cube-color="grey"] {
+    background-color: $light-grey;
+  }
+
+  &[data-cube-color="primary"] {
+    background-color: $primary;
+  }
+
+  &[data-cube-color="secondary"] {
+    background-color: $secondary;
+  }
+
+  &[data-cube-color="success"] {
+    background-color: $success;
+  }
+}
