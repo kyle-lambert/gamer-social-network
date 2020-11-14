@@ -11,7 +11,15 @@ const postSchema = new Schema({
     required: true,
   },
   image: {
-    type: String,
+    key: {
+      type: String,
+    },
+    bucket: {
+      type: String,
+    },
+    location: {
+      type: String,
+    },
   },
   avatar: {
     type: String,
