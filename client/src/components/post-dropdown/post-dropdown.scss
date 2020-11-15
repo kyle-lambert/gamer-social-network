@@ -1,0 +1,12 @@
+@import "../../scss/base/variables";
+
+.post-dropdown {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  justify-self: flex-end;
+  align-self: center;
+
+  &__btn {
+    background-color: transparent;
+  }
+}

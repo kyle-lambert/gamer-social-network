@@ -12,6 +12,8 @@ import { ReactComponent as PersonAdd } from "../../assets/icons/person_add.svg";
 import { ReactComponent as PersonOutline } from "../../assets/icons/person_outline.svg";
 import { ReactComponent as Search } from "../../assets/icons/search.svg";
 import { ReactComponent as Settings } from "../../assets/icons/settings.svg";
+import { ReactComponent as MoreDots } from "../../assets/icons/more_dots.svg";
+import { ReactComponent as Comment } from "../../assets/icons/comment.svg";
 
 const icons = {
   arrowDown: <ArrowDown />,
@@ -26,6 +28,8 @@ const icons = {
   personOutline: <PersonOutline />,
   search: <Search />,
   settings: <Settings />,
+  moreDots: <MoreDots />,
+  comment: <Comment />,
 };
 
 function SVGIcon({ name, size = "medium", fillColor = "white" }) {

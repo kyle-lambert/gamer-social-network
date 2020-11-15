@@ -1,0 +1,11 @@
+@import "../../scss/base/variables";
+
+.post-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, auto);
+  row-gap: 25px;
+  padding: 30px;
+  background-color: $white;
+  border-radius: 15px;
+}
