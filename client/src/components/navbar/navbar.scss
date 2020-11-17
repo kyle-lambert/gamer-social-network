@@ -11,8 +11,8 @@
   align-items: center;
   justify-content: center;
   background-color: $white;
-  border-top-right-radius: 25px;
-  border-top-left-radius: 25px;
+  border-top-right-radius: 24px;
+  border-top-left-radius: 24px;
 
   @media (min-width: $tablet) {
     top: 0;
@@ -22,8 +22,8 @@
     width: 90px;
     border-radius: initial;
     border: unset;
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
   }
 
   &__nav {

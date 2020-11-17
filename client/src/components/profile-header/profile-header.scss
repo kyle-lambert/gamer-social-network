@@ -1,0 +1,45 @@
+@import "../../scss/base/variables";
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+
+  &__name {
+    margin-top: 25px;
+    text-align: center;
+  }
+
+  &__handle {
+    color: $grey;
+    font-size: 16px;
+    margin-top: 5px;
+    text-align: center;
+  }
+
+  &__stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  &__stat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 15px;
+
+    &-value {
+      color: $dark;
+      margin-right: 8px;
+    }
+
+    &-key {
+      color: $grey;
+    }
+  }
+}
