@@ -1,12 +1,12 @@
 import React from "react";
-import "./post-content.scss";
+import "./post-card-content.scss";
 
-import landscape from "../../assets/images/landscape.jpg";
+import landscape from "../../../assets/images/landscape.jpg";
 
-function PostContent(props) {
+function PostCardContent(props) {
   return (
-    <div className="post-content">
-      <p className="post-content__text">
+    <div className="post-card-content">
+      <p className="post-card-content__text">
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem mollitia
         at saepe minus, possimus iste obcaecati vitae voluptates tenetur
         deleniti placeat deserunt provident sapiente earum repellendus
@@ -21,9 +21,13 @@ function PostContent(props) {
         amet dolore hic mollitia vitae animi nihil doloribus, incidunt nam fuga.
         Ex nesciunt dolorem sunt, illo cum consectetur.
       </p>
-      <img src={landscape} alt="Post Image" className="post-content__image" />
+      <img
+        src={landscape}
+        alt="Post Image"
+        className="post-card-content__image"
+      />
     </div>
   );
 }
 
-export default PostContent;
+export default PostCardContent;

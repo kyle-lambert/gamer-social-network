@@ -1,18 +1,22 @@
 import React from "react";
 import "./post-card.scss";
 
-import PostAuthor from "../../components/post-author/post-author";
-import PostContent from "../../components/post-content/post-content";
-import PostDropdown from "../../components/post-dropdown/post-dropdown";
-import PostEngagement from "../../components/post-engagement/post-engagement";
+import UserInfoGroup from "../user-info-group/user-info-group";
+import UserEngagement from "../user-engagement/user-engagement";
+import PostDropdown from "./post-card-dropdown/post-card-dropdown";
+import PostContent from "./post-card-content/post-card-content";
 
 function PostCard(props) {
   return (
     <article className="post-card">
-      <PostAuthor />
+      <div className="post-card__user">
+        <UserInfoGroup />
+      </div>
       <PostDropdown />
       <PostContent />
-      <PostEngagement />
+      <div className="post-card__engagement">
+        <UserEngagement />
+      </div>
     </article>
   );
 }

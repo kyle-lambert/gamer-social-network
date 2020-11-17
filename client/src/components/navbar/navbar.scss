@@ -10,7 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $primary;
+  background-color: $white;
   border-top-right-radius: 25px;
   border-top-left-radius: 25px;
 
@@ -21,6 +21,9 @@
     height: 100%;
     width: 90px;
     border-radius: initial;
+    border: unset;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
   }
 
   &__nav {
@@ -40,16 +43,16 @@
     align-items: center;
     width: 50px;
     height: 50px;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(98, 59, 255, 0.2);
     border-radius: 12px;
     cursor: pointer;
   }
 
   &__selected {
-    background-color: rgba(255, 255, 255, 1);
+    background-color: $primary;
 
     svg {
-      fill: $primary !important; // Overide SVG fill when NavLink selected
+      fill: $white !important; // Overide SVG fill when NavLink selected
     }
   }
 }

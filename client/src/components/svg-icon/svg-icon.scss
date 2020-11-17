@@ -18,18 +18,20 @@
   }
 
   &[data-fill-color="white"] {
-    fill: $white;
-
     svg {
       fill: $white;
     }
   }
 
   &[data-fill-color="grey"] {
-    fill: $grey;
-
     svg {
       fill: $grey;
+    }
+  }
+
+  &[data-fill-color="primary"] {
+    svg {
+      fill: $primary;
     }
   }
 

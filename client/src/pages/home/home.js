@@ -1,21 +1,17 @@
 import React from "react";
+import "./home.scss";
 
-import MainLayout from "../../layout/main-layout/main-layout";
-import SidebarLayout from "../../layout/sidebar-layout/sidebar-layout";
-import Navbar from "../../components/navbar/navbar";
+import Dashboard from "../../layout/dashboard/dashboard";
 
-import NewPost from "../../components/new-post/new-post";
 import PostCard from "../../components/post-card/post-card";
 
 function Home(props) {
   return (
-    <>
-      <Navbar />
-      <MainLayout sidebar>
+    <Dashboard>
+      <div className="home">
         <PostCard />
-      </MainLayout>
-      <SidebarLayout>sidebar</SidebarLayout>
-    </>
+      </div>
+    </Dashboard>
   );
 }
 

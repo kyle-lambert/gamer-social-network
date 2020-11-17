@@ -17,7 +17,7 @@ function Navbar(props) {
               to={route.path}
               className="navbar__link"
               activeClassName="navbar__selected">
-              <SVGIcon name={route.iconName} />
+              <SVGIcon name={route.iconName} fillColor="primary" />
             </NavLink>
           );
         })}
