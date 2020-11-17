@@ -4,9 +4,6 @@ import "./home.scss";
 import Dashboard from "../../layout/dashboard/dashboard";
 import PostCard from "../../components/post-card/post-card";
 
-import MulticolumnContainer from "../../layout/multicolumn-container/multicolumn-container";
-import MulticolumnItem from "../../layout/multicolumn-item/multicolumn-item";
-
 import avatar from "../../assets/images/face-portrait.jpg";
 import palmTrees from "../../assets/images/palm-trees.jpg";
 import pridePerson from "../../assets/images/pride-person.jpg";
@@ -16,15 +13,15 @@ function Home(props) {
   return (
     <Dashboard>
       <div className="home">
-        <MulticolumnContainer>
+        <div className="home__post-container">
           {posts.map((post, i) => {
             return (
-              <MulticolumnItem key={i}>
+              <div key={i} className="home__post-item">
                 <PostCard post={post} />
-              </MulticolumnItem>
+              </div>
             );
           })}
-        </MulticolumnContainer>
+        </div>
       </div>
     </Dashboard>
   );

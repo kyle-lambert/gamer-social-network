@@ -6,4 +6,18 @@
   @media (min-width: $tablet) {
     padding: 50px;
   }
+
+  &__post-container {
+    columns: 380px;
+    gap: 30px;
+  }
+
+  &__post-item {
+    margin-bottom: 30px;
+    break-inside: avoid;
+
+    &:last-child {
+      margin-bottom: unset;
+    }
+  }
 }
