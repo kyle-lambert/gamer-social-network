@@ -1,21 +1,19 @@
 import React from "react";
 import "./user-info-group.scss";
 
-import portrait from "../../assets/images/face-portrait.jpg";
-
-function UserInfoGroup(props) {
+function UserInfoGroup({ avatar, name, createdAt }) {
   return (
     <div className="user-info-group">
       <div className="user-info-group__avatar">
         <img
-          src={portrait}
+          src={avatar}
           alt="User Avatar"
           className="user-info-group__image"
         />
       </div>
       <div className="user-info-group__info">
-        <span className="user-info-group__name">Kyle Lambert</span>
-        <span className="user-info-group__created-at">16th December 2020</span>
+        <span className="user-info-group__name">{name}</span>
+        <span className="user-info-group__created-at">{createdAt}</span>
       </div>
     </div>
   );
