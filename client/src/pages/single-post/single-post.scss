@@ -1,0 +1,9 @@
+@import "../../scss/base/variables";
+
+.single-post {
+  padding: 30px;
+
+  @media (min-width: $tablet) {
+    padding: 50px;
+  }
+}

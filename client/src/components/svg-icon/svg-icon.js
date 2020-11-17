@@ -5,15 +5,15 @@ import { ReactComponent as ArrowLeft } from "../../assets/icons/arrow_left.svg";
 import { ReactComponent as CheckCircle } from "../../assets/icons/check_circle.svg";
 import { ReactComponent as Done } from "../../assets/icons/done.svg";
 import { ReactComponent as ErrorOutline } from "../../assets/icons/error_outline.svg";
-import { ReactComponent as FavoriteBorder } from "../../assets/icons/favorite_border.svg";
-import { ReactComponent as Favorite } from "../../assets/icons/favorite.svg";
+import { ReactComponent as HeartOutline } from "../../assets/icons/heart_outline.svg";
+import { ReactComponent as Heart } from "../../assets/icons/heart.svg";
 import { ReactComponent as Home } from "../../assets/icons/home.svg";
-import { ReactComponent as PersonAdd } from "../../assets/icons/person_add.svg";
-import { ReactComponent as PersonOutline } from "../../assets/icons/person_outline.svg";
+import { ReactComponent as Person } from "../../assets/icons/person.svg";
 import { ReactComponent as Search } from "../../assets/icons/search.svg";
 import { ReactComponent as Settings } from "../../assets/icons/settings.svg";
 import { ReactComponent as MoreDots } from "../../assets/icons/more_dots.svg";
-import { ReactComponent as Comment } from "../../assets/icons/comment.svg";
+import { ReactComponent as CommentOutline } from "../../assets/icons/comment_outline.svg";
+import { ReactComponent as Friends } from "../../assets/icons/friends.svg";
 
 const icons = {
   arrowDown: <ArrowDown />,
@@ -21,15 +21,15 @@ const icons = {
   checkCircle: <CheckCircle />,
   done: <Done />,
   errorOutline: <ErrorOutline />,
-  favoriteBorder: <FavoriteBorder />,
-  favorite: <Favorite />,
+  heartOutline: <HeartOutline />,
+  heart: <Heart />,
   home: <Home />,
-  personAdd: <PersonAdd />,
-  personOutline: <PersonOutline />,
+  person: <Person />,
   search: <Search />,
   settings: <Settings />,
   moreDots: <MoreDots />,
-  comment: <Comment />,
+  commentOutline: <CommentOutline />,
+  friends: <Friends />,
 };
 
 function SVGIcon({ name, size = "medium", fillColor = "white" }) {

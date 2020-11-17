@@ -1,4 +1,4 @@
-import React, { lazy } from "react";
+import React from "react";
 import "./post-card.scss";
 
 import UserInfoGroup from "../user-info-group/user-info-group";
